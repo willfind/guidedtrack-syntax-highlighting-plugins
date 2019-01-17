@@ -1,0 +1,117 @@
+# whatIfs in repository
+
+# If this is your first time writing a language grammar, check out:
+#   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
+
+# In general, it would probably be a good idea to make the scopes more closely match their actual meanings. I first made this aiming just for the colors I wanted; I've tried to reorganize them a bit since.
+# Ref for intended theme scope meanings for textMate: https://macromates.com/manual/en/language_grammars
+
+# Set up a first-line regex to match `--.*`
+
+'scopeName': 'source.guidedtrack'
+'name': 'Guidedtrack'
+'fileTypes': [
+  'guidedtrack'
+]
+'firstLineMatch': '--.*$'
+'patterns': [
+  {
+    'comment': 'commenting'
+    'match': '--.*$'
+    'name': 'comment.line.guidedtrack'
+  }
+  {
+    'comment': 'commands'
+    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|list|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch)\\b$'
+    'name': 'keyword.control.guidedtrack'
+  }
+  {
+    'comment': 'commands with : following'
+    'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|answers|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto)(\\:)\\s(.*)'
+    'captures':
+      0:
+        'name': 'storage.type.guidedtrack'
+      1:
+        'name': 'storage.type.guidedtrack'
+      2:
+        'name': 'storage.type.guidedtrack'
+      3:
+        'name': 'storage.type.guidedtrack'
+      4:
+        'name': 'constant.character.guidedtrack'
+  }
+  {
+    'comment': 'defining variables'
+    'match': '(>>\\s?\\w+\\s?=)\\s?(.*)'
+    'captures':
+      0:
+        'name': 'variable.other.object.guidedtrack'
+      1:
+        'name': 'markup.bold.guidedtrack'
+      2:
+        'name': 'variable.function.guidedtrack'
+        'patterns': [
+          {'include':'#strings'}
+          {'include':'#numbers'}
+        ]
+  }
+  {
+    'comment': 'performing functions on variables, like .shuffle [make . diff color?]'
+    'match': '(>>.*)(\\.)(.*)'
+    'captures':
+      0:
+        'name': 'markup.bold.guidedtrack'
+      1:
+        'name': 'markup.bold.guidedtrack'
+      2:
+        'name': 'storage.type.guidedtrack'
+      3:
+        'name': 'markup.bold.guidedtrack'
+  }
+  {'include': '#ifWhiles'} #I put ifWhiles in the repository as an experiment; should probably put all in repo, or all repeated in main patterns.
+  {'include': '#illegal'}
+]
+
+'repository':
+  'strings':{# Strings need to be made robust, prob with begin/end formatting; currently, characters between strings are caught.
+    'name': 'string.quoted.guidedtrack'
+    'contentName': 'string.quoted.guidedtrack'
+    'begin': '"'
+    'beginCaptures': 'string.quoted.guidedtrack'
+    'end': '"'
+    'endCaptures': 'string.quoted.guidedtrack'
+  }
+  'numbers':{
+    'name': 'constant.numeric.guidedtrack'
+    'match':'\\b(-)?[0-9.]+\\b'
+    #'match': '\\s?\\d+\\s?'
+  }
+  'ifWhiles': {
+    'comment': 'ifs and whiles'
+    'patterns':[
+      {
+        'comment': '*if/*while functions [add support for numbers, strings, logical operater highlighting following]'
+        'match': '\\*(if|while)\\:\\s?(.*)'
+        'captures':
+          0:
+            'name': 'keyword.control.guidedtrack'
+          1:
+            'name': 'keyword.control.guidedtrack'
+          2:
+            'name': 'variable.function.guidedtrack'
+            'patterns': [
+              {'include':'#strings'}
+              {'include':'#numbers'}
+            ]
+      }
+    ]
+  }
+  'illegal':{
+    'name': 'invalid.illegal.spaces.guidedtrack'
+    'match':'^\\s? .*$'
+  }
+
+'limitLineLength': false
+
+
+# Does this work as a comment?
