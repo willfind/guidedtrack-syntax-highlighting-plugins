@@ -2,7 +2,7 @@
 #   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
 
 # Ref for intended theme scope meanings for textMate: https://macromates.com/manual/en/language_grammars
-# mnt/c/Users/andre/github/language-guidedtrack
+
 'scopeName': 'source.guidedtrack'
 'name': 'GuidedTrack'
 'fileTypes': [
