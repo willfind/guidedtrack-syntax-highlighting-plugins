@@ -1,9 +1,9 @@
-# PackageName language package
+# GuidedTrack language package
 
 An Atom TextMate grammar for the GuidedTrack language.
 
 One way to set this up on your machine:
-* ctrl + shft +
+* ctrl + shft + p
 * Type `language`
 * Select `Generate Language Package`
 * Replace the example.cson with guidedtrack.cson
