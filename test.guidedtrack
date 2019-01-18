@@ -12,13 +12,18 @@
 		>>birdCat = "winter"
 
 --bird group collections
->>winterBirds = ["Tufted Titmouse", ab 2 3sd "Red-breasted Nuthatch", "Chickadee", "Junco"]
+
+>>winterBirds = ["Tufted Titmouse", {interpolated}, "some other", {interpolated}, ab 2 3sd "Red-breasted Nuthatch", "Chickadee", "Junco"]
 
  >>birdGroup = []
 
 --should not register
  "string"
+["Not a valid collection", 5, variable]
+= + *
+{interpolated}
 
+*bold text* and some not bold *more bold* now some /italic/ and now some _underlined_. 
  *if: done = 1
 	>>doSomething = "yes"
 *while: count <= 34
@@ -28,8 +33,8 @@
 
 *if: state = "learn"
 	*question: {blank}
-		*answers: birdGroup
-		*save: bird
+		*answers: birdGroup and
+		*save: bird groups
 
 *question: {blank}
 	Calls
@@ -58,7 +63,7 @@
 *if: state = "practice"
 	>>birdGroup.shuffle
 	*question: What bird?
-		*answers: {birdGroup}
+		*answers: birdGroup
 		*save: answer
 	*if: answer = practiceBird
 		Right!

@@ -1,3 +1,3 @@
 # PackageName language package
 
-A short description of your language package.
+An Atom TextMate grammar for the GuidedTrack language.

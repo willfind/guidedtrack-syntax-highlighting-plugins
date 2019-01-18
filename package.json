@@ -1,7 +1,7 @@
 {
   "name": "language-guidedtrack",
   "version": "0.0.0",
-  "description": "A short description of your language package",
+  "description": "For creating programs on the GuidedTrack platform",
   "keywords": [
     "language",
     "grammar"
