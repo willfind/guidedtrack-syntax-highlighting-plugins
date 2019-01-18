@@ -1,0 +1,172 @@
+%YAML 1.2
+---
+# See http://www.sublimetext.com/docs/3/syntax.html
+# If we ever want to convert to Atom: https://github.com/idleberg/atom-atomizr/issues/5
+name: guidedtrack
+file_extensions:
+  - guidedtrack
+scope: source.guidedtrack
+
+contexts:
+  # The prototype context is prepended to all contexts but those setting
+  # meta_include_prototype: false.
+  prototype:
+    - include: comments
+
+  main:
+    # The main context is the initial starting point of our syntax.
+    # Include other contexts from here (or specify them directly).
+    - include: keywords
+    - include: numbers
+    - include: strings
+    - include: variables
+    - include: interpolated_gt
+    - include: collection
+    - include: markup
+
+  keywords:
+    # GuidedTrack keywords
+    # Note that blackslashes don't need to be escaped within single quoted
+    # strings in YAML. When using single quoted strings, only single quotes
+    # need to be escaped: this is done by using two single quotes next to each
+    # other.
+    # these are the keywords that don't take colons and are blank afterwards
+    - match: '\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|list|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch)\b'
+      scope: keyword.control.guidedtrack
+    # these are the keywords that take colons and text after them
+    - match: '\*(question|type|before|after|min|max|tip|time|date|icon|countdown|answers|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto)\:'
+      scope: keyword.control.guidedtrack
+      push:
+        - meta_scope: entity.name.guidedtrack
+        - match: $\n?
+          pop: true
+    # *save: has to be separate so that we can apply the correct syntax styling after it so that we know that it defines a one-word variable
+    - match: '\*(save)\:'
+      scope: keyword.control.guidedtrack
+      push:
+        - meta_scope: storage.type.save.guidedtrack
+        - match: '\w+\s'
+          pop: true
+    # if you see logical operators after *if: and *when: then show those in a different color
+    - match: '\*(if|while)\:'
+      scope: keyword.control.guidedtrack
+      push:
+        - include: numbers
+        - include: strings
+        - include: logical_operators
+        - meta_scope: entity.name.guidedtrack
+        - match: $\n?
+          pop: true
+
+  numbers:
+    - match: '\b(-)?[0-9.]+\b'
+      scope: constant.numeric.guidedtrack
+
+  strings:
+    # Strings begin and end with quotes, and use backslashes as an escape character.
+    - match: '"'
+      scope: punctuation.definition.string.begin.guidedtrack
+      push: inside_string
+
+  inside_string:
+    - include: interpolated_gt
+    - meta_include_prototype: false
+    - meta_scope: string.quoted.double.guidedtrack
+    - match: '\.'
+      scope: constant.character.escape.guidedtrack
+    - match: '"'
+      scope: punctuation.definition.string.end.guidedtrack
+      pop: true
+
+  comments:
+    # Comments begin with a '--' and finish at the end of the line.
+    - match: '^--'
+      scope: punctuation.definition.comment.guidedtrack
+      push:
+        # This is an anonymous context push for brevity.
+        - meta_scope: comment.line.double-slash.guidedtrack
+        - match: $\n?
+          pop: true
+
+  variables:
+    - match: '(>>\s?\w+\s?=)'
+      scope: entity.name.guidedtrack
+      push:
+        - include: strings
+        - include: numbers
+        - include: math_operators
+        - include: interpolated_gt
+        - meta_scope: variable.function.guidedtrack
+        - match: $\n?
+          pop: true
+    - match: '(>>)'
+      scope: variable.function.guidedtrack
+      push:
+        - meta_scope: variable.function.guidedtrack
+        - match: $\n?
+          pop: true
+
+
+  interpolated_gt:
+    - match: '(\{)(\})'
+      scope: variable.parameter.guidedtrack
+      captures:
+        1. source.guidedtrack.embedded.source
+        2. source.guidedtrack.embedded.source.empty
+    - match: '\{'
+      scope: variable.parameter.guidedtrack
+      push:
+        - meta_scope: variable.parameter.source
+        - match: '\}'
+          scope: variable.parameter.guidedtrack
+          pop: true
+  
+  collection:
+    - match: '\['
+      scope: variable.function.guidedtrack
+      push:
+        - include: strings
+        - meta_scope: variable.function.guidedtrack
+        - match: '\]'
+          scope: variable.function.guidedtrack
+          pop: true
+
+  logical_operators:
+    - match: '<|>|=|<=|>=|\band\b|\bor\b|\bnot\b|\+|-'
+      scope: keyword.operator.guidedtrack
+    - match: '\('
+      scope: punctuation.definition.bold.begin.guidedtrack
+      push:
+        - meta_scope: markup.bold.guidedtrack
+        - match: '\n|\)'
+          scope: punctuation.definition.bold.end.guidedtrack
+          pop: true
+
+  math_operators:
+    - match: '\+|-|\*|\/'
+      scope: keyword.operator.guidedtrack
+
+ 
+  # Capture markup for bold and italics. For some reason I can't get underline to work, but I'm leaving the code in there since it *should* be correct
+  markup:
+    - match: \*
+      scope: punctuation.definition.bold.begin.guidedtrack
+      push:
+        - meta_scope: markup.bold.guidedtrack
+        - match: \n|\*\s
+          scope: punctuation.definition.bold.end.guidedtrack
+          pop: true
+    - match: \/
+      scope: punctuation.definition.italic.begin.guidedtrack
+      push:
+        - meta_scope: markup.italic.guidedtrack
+        - match: \n|\/\s
+          scope: punctuation.definition.italic.end.guidedtrack
+          pop: true
+    - match: _
+      scope: punctuation.definition.underline.begin.guidedtrack
+      push:
+        - meta_scope: markup.underline.guidedtrack
+        - match: \n|_\s
+          scope: punctuation.definition.underline.end.guidedtrack
+          pop: true
