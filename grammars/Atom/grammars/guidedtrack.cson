@@ -2,12 +2,13 @@
 #   - https://flight-manual.atom.io/hacking-atom/sections/creating-a-grammar/
 
 # Ref for intended theme scope meanings for textMate: https://macromates.com/manual/en/language_grammars
+# mnt/c/Users/andre/github/language-guidedtrack
 
+#Note that tabs/spaces are not interchangeable in textMate grammars.
 'scopeName': 'source.guidedtrack'
 'name': 'GuidedTrack'
 'fileTypes': [
   'guidedtrack'
-  'gt'
 ]
 'firstLineMatch': '--.*$'
 'patterns': [
@@ -26,43 +27,53 @@
     'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto)(\\:)\\s(.*)'
     'captures':
       0:
-        'name': 'storage.type.guidedtrack'
+        'name': 'keyword.control.guidedtrack'
       1:
-        'name': 'storage.type.guidedtrack'
+        'name': 'keyword.control.guidedtrack'
       2:
-        'name': 'storage.type.guidedtrack'
+        'name': 'keyword.control.guidedtrack'
       3:
-        'name': 'storage.type.guidedtrack'
+        'name': 'keyword.control.guidedtrack'
       4:
         'name': 'constant.character.guidedtrack'
   }
   {
     'comment': 'defining variables'
-    'match': '(>>\\s?\\w+\\s?=)\\s?(.*)'
+    'match': '(>>)\\s?(\\w+\\s?)(=)\\s?(.*)'
     'captures':
       0:
         'name': 'variable.other.object.guidedtrack'
       1:
-        'name': 'markup.bold.guidedtrack'
+        'name': 'keyword.control.guidedtrack'
       2:
+        'name': 'variable.function.guidedtrack'
+      3:
+        'name': 'variable.function.guidedtrack'
+        'patterns': [
+          {'include': '#signs'}
+        ]
+      4:
         'name': 'variable.function.guidedtrack'
         'patterns': [
           {'include':'#strings'}
           {'include':'#numbers'}
           {'include': '#interpolated'}
+          {'include': '#signs'}
         ]
   }
   {
     'comment': 'performing functions on variables, like .shuffle [make . diff color?]'
-    'match': '(>>.*)(\\.)(.*)'
+    'match': '(>>)(.*)(\\.)(.*)'
     'captures':
       0:
-        'name': 'markup.bold.guidedtrack'
+        'name': 'variable.function.guidedtrack'
       1:
-        'name': 'markup.bold.guidedtrack'
+        'name': 'keyword.control.guidedtrack'
       2:
-        'name': 'constant.other.color.guidedtrack'
+        'name': 'variable.function.guidedtrack'
       3:
+        'name': 'constant.other.color.guidedtrack'
+      4:
         'name': 'markup.bold.guidedtrack'
   }
   {'include': '#ifWhile'} #I put ifWhiles in the repository as an experiment; should probably put all in repo, or all repeated in main patterns.
@@ -137,6 +148,3 @@
 
 
 'limitLineLength': false
-
-
-# Does this work as a comment?

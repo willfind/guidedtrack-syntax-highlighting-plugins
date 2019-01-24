@@ -1,11 +1,12 @@
 %YAML 1.2
 ---
 # See http://www.sublimetext.com/docs/3/syntax.html
-# If we ever want to convert to Atom: https://github.com/idleberg/atom-atomizr/issues/5
+# Note that you cannot use tabs in a YAML file.
 name: guidedtrack
 file_extensions:
   - guidedtrack
 scope: source.guidedtrack
+first_line_match: '--.*$'
 
 contexts:
   # The prototype context is prepended to all contexts but those setting
@@ -23,6 +24,7 @@ contexts:
     - include: interpolated_gt
     - include: collection
     - include: markup
+    - include: illegal_spaces
 
   keywords:
     # GuidedTrack keywords
@@ -31,17 +33,17 @@ contexts:
     # need to be escaped: this is done by using two single quotes next to each
     # other.
     # these are the keywords that don't take colons and are blank afterwards
-    - match: '\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|list|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch)\b'
+    - match: '\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|list|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch|points|page|reset)\b'
       scope: keyword.control.guidedtrack
     # these are the keywords that take colons and text after them
-    - match: '\*(question|type|before|after|min|max|tip|time|date|icon|countdown|answers|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto)\:'
+    - match: '\*(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto)\:'
       scope: keyword.control.guidedtrack
       push:
         - meta_scope: entity.name.guidedtrack
         - match: $\n?
           pop: true
     # *save: has to be separate so that we can apply the correct syntax styling after it so that we know that it defines a one-word variable
-    - match: '\*(save)\:'
+    - match: '\*(save|answers)\:'
       scope: keyword.control.guidedtrack
       push:
         - meta_scope: storage.type.save.guidedtrack
@@ -120,7 +122,7 @@ contexts:
         - match: '\}'
           scope: variable.parameter.guidedtrack
           pop: true
-  
+
   collection:
     - match: '\['
       scope: variable.function.guidedtrack
@@ -146,7 +148,10 @@ contexts:
     - match: '\+|-|\*|\/'
       scope: keyword.operator.guidedtrack
 
- 
+  illegal_spaces:
+    - match: '^\s? .*$'
+      scope: 'invalid.illegal.spaces.guidedtrack'
+
   # Capture markup for bold and italics. For some reason I can't get underline to work, but I'm leaving the code in there since it *should* be correct
   markup:
     - match: \*

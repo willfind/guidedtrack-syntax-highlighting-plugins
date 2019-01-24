@@ -7,3 +7,9 @@ One way to set this up on your machine:
 * Type `language`
 * Select `Generate Language Package`
 * Replace the example.cson with guidedtrack.cson
+
+Note that you can trigger GuidedTrack syntax highlighting by making the first line of your file follow this format:
+  --{program name here}
+
+Includes error highlighting for:
+  * illegal spaces
