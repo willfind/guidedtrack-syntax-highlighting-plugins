@@ -24,7 +24,7 @@
   }
   {
     'comment': 'commands with : following'
-    'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto)(\\:)\\s(.*)'
+    'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis)(\\:)\\s(.*)'
     'captures':
       0:
         'name': 'keyword.control.guidedtrack'

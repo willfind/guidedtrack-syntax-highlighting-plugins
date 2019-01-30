@@ -36,7 +36,7 @@ contexts:
     - match: '\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|list|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch|points|page|reset)\b'
       scope: keyword.control.guidedtrack
     # these are the keywords that take colons and text after them
-    - match: '\*(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto)\:'
+    - match: '\*(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis)\:'
       scope: keyword.control.guidedtrack
       push:
         - meta_scope: entity.name.guidedtrack

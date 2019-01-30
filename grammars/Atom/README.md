@@ -9,6 +9,7 @@ One way to set this up on your machine:
 * Replace the example.cson with guidedtrack.cson
 
 Note that you can trigger GuidedTrack syntax highlighting by making the first line of your file follow this format:
+
   --{program name here}
 
 Includes error highlighting for:
