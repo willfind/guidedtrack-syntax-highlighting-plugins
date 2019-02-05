@@ -6,7 +6,7 @@ One way to set this up on your machine:
 * ctrl + shft + p
 * Type `language`
 * Select `Generate Language Package`
-* Replace the example.cson with guidedtrack.cson
+* In the file path given, replace `language-my-language` with `language-guidedtrack`.
 
 Note that you can trigger GuidedTrack syntax highlighting by making the first line of your file follow this format:
 

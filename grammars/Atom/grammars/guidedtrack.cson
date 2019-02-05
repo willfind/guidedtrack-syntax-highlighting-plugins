@@ -12,6 +12,12 @@
 ]
 'firstLineMatch': '--.*$'
 'patterns': [
+  {'include': 'highlight'}
+  {'include': 'notice2'}
+  {
+    'match': '--notice\! .*'
+    'name': 'invalid.illegal.spaces.guidedtrack'
+  }
   {
     'comment': 'commenting'
     'match': '--.*$'
@@ -19,12 +25,12 @@
   }
   {
     'comment': 'commands'
-    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|list|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch|points|page|reset)\\b$'
+    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch|page|reset|list\\:\\s?expandable|list)\\b$'
     'name': 'keyword.control.guidedtrack'
   }
   {
     'comment': 'commands with : following'
-    'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis)(\\:)\\s(.*)'
+    'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis|points)(\\:)\\s?(.*)'
     'captures':
       0:
         'name': 'keyword.control.guidedtrack'
@@ -39,7 +45,7 @@
   }
   {
     'comment': 'defining variables'
-    'match': '(>>)\\s?(\\w+\\s?)(=)\\s?(.*)'
+    'match': '(>>)\\s?(\\w+)(\\[?.*\\]?)\\s?(=)\\s?(.*)'
     'captures':
       0:
         'name': 'variable.other.object.guidedtrack'
@@ -48,11 +54,13 @@
       2:
         'name': 'variable.function.guidedtrack'
       3:
+        'name': 'constant.other.color.guidedtrack'
+      4:
         'name': 'variable.function.guidedtrack'
         'patterns': [
           {'include': '#signs'}
         ]
-      4:
+      5:
         'name': 'variable.function.guidedtrack'
         'patterns': [
           {'include':'#strings'}
@@ -80,6 +88,8 @@
   {'include': '#illegalSpace'}
   {'include': '#saveAnswer'}
   {'include': '#interpolated'}
+  {'include': '#notice'}
+  {'include': '#highlight'}
 
 
 ]
@@ -145,6 +155,20 @@
       }
     ]
   }
-
+  # This doesn't work at all. Nor 'notice', below. Figure out how to make it multi-line...though it doesn't work on one line either. Could just be order. (Now, I think it's that "comment" is overriding it.)
+  'highlight':{
+    'name': 'meta.bold.guidedtrack'
+    'contentName': 'meta.bold.guidedtrack'
+    'begin': '--select'
+    'beginCaptures': 'meta.bold.guidedtrack'
+    'end': '--endSelect'
+    'endCaptures': 'meta.bold.guidedtrack'
+  }
+  'notice2':{
+  'illegalSpace':{
+    'name': 'invalid.illegal.spaces.guidedtrack'
+    'match':'^\\s? .*$'
+  }
+  }
 
 'limitLineLength': false
