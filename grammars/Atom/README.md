@@ -4,6 +4,8 @@ Note several features (below) that are not included in the online GT syntax high
 
 An Atom TextMate grammar for the GuidedTrack language.
 
+This theme was designed for use with Atom's default One Dark theme. Used with this theme, it closely mimics GT's built-in highlighter's color scheme.
+
 One way to set this up on your machine:
 * ctrl + shft + p
 * Type `language`
