@@ -12,9 +12,17 @@
 ]
 'firstLineMatch': '--.*$'
 'patterns': [
-  {'include': 'highlight'}
-  {'include': 'notice2'}
   {
+    'comment':'multi-line highlighting for organizational use.'
+    'name': 'meta.require.guidedtrack'
+    'contentName': 'markup.italic.guidedtrack'
+    'begin': '--select'
+    'beginCaptures': 'markup.bold.guidedtrack'
+    'end': '--endSelect'
+    'endCaptures': 'markup.bold.guidedtrack'
+  }
+  {
+    'comment': 'creates error-like highlighting for comments to increase visibility.'
     'match': '--notice\! .*'
     'name': 'invalid.illegal.spaces.guidedtrack'
   }
@@ -25,12 +33,12 @@
   }
   {
     'comment': 'commands'
-    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|switch|page|reset|list\\:\\s?expandable|list)\\b$'
+    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list)\\b$'
     'name': 'keyword.control.guidedtrack'
   }
   {
     'comment': 'commands with : following'
-    'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis|points)(\\:)\\s?(.*)'
+    'match': '(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis|switch|points)(\\:)\\s?(.*)'
     'captures':
       0:
         'name': 'keyword.control.guidedtrack'
@@ -154,21 +162,6 @@
           2: 'name': 'variable.function.guidedtrack'
       }
     ]
-  }
-  # This doesn't work at all. Nor 'notice', below. Figure out how to make it multi-line...though it doesn't work on one line either. Could just be order. (Now, I think it's that "comment" is overriding it.)
-  'highlight':{
-    'name': 'meta.bold.guidedtrack'
-    'contentName': 'meta.bold.guidedtrack'
-    'begin': '--select'
-    'beginCaptures': 'meta.bold.guidedtrack'
-    'end': '--endSelect'
-    'endCaptures': 'meta.bold.guidedtrack'
-  }
-  'notice2':{
-  'illegalSpace':{
-    'name': 'invalid.illegal.spaces.guidedtrack'
-    'match':'^\\s? .*$'
-  }
   }
 
 'limitLineLength': false
