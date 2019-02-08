@@ -1,7 +1,9 @@
-Syntax highlighters for the GuidedTrack language. 
+Syntax highlighters for the GuidedTrack language.
 
-Currently available for Atom and Sublime. 
+Currently available for Atom and Sublime.
 
-The Atom grammar is constructed in Textmate, and may work for other editors as well. 
+The Atom grammar is constructed in Textmate, and may work for other editors as well.
 
-See the readme files for each grammar, respectively, for more information. 
+See the readme files for each grammar, respectively, for more information.
+
+For questions/difficulty with installation: andy@uplift.app
