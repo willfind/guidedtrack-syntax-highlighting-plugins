@@ -1,10 +1,10 @@
 # GuidedTrack language package
 
-Note several features (below) that are not included in the online GT syntax highlighting.
-
 An Atom TextMate grammar for the GuidedTrack language.
 
-This theme was designed for use with Atom's default One Dark theme. Used with this theme, it closely mimics GT's built-in highlighter's color scheme.
+This theme was designed for use with Atom's default One Dark theme. Used with this theme, it closely mimics GT's built-in highlighter's color scheme. It also works well with One Light. For a light theme that looks like the GT web editor, check out @PBrietbart's "parity" theme in this repo.
+
+Note several features (below) that are not included in the online GT syntax highlighting.
 
 One way to set this up on your machine:
 * ctrl + shft + p
