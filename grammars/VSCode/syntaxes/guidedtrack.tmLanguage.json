@@ -1,0 +1,218 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"scopeName": "source.guidedtrack",
+  "name": "GuidedTrack",
+  "fileTypes": [
+    "guidedtrack"
+  ],
+  "firstLineMatch": "--.*$",
+  "patterns": [
+    {
+      "comment": "multi-line highlighting for organizational use.",
+      "name": "meta.require.guidedtrack",
+      "contentName": "markup.italic.guidedtrack",
+      "begin": "--select",
+      "beginCaptures": "markup.bold.guidedtrack",
+      "end": "--endSelect",
+      "endCaptures": "markup.bold.guidedtrack"
+    },
+    {
+      "comment": "creates error-like highlighting for comments to increase visibility.",
+      "match": "--notice! .*",
+      "name": "invalid.illegal.spaces.guidedtrack"
+    },
+    {
+      "comment": "commenting",
+      "match": "--.*$",
+      "name": "comment.line.guidedtrack"
+    },
+    {
+      "comment": "commands",
+      "match": "\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list)\\b$",
+      "name": "keyword.control.guidedtrack"
+    },
+    {
+      "comment": "commands with : following",
+      "match": "(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis|switch|points)(\\:)\\s?(.*)",
+      "captures": {
+        "0": {
+          "name": "keyword.control.guidedtrack"
+        },
+        "1": {
+          "name": "keyword.control.guidedtrack"
+        },
+        "2": {
+          "name": "keyword.control.guidedtrack"
+        },
+        "3": {
+          "name": "keyword.control.guidedtrack"
+        },
+        "4": {
+          "name": "constant.character.guidedtrack"
+        }
+      }
+    },
+    {
+      "comment": "defining variables",
+      "match": "(>>)\\s?(\\w+)(\\[?.*\\]?)\\s?(=)\\s?(.*)",
+      "captures": {
+        "0": {
+          "name": "variable.other.object.guidedtrack"
+        },
+        "1": {
+          "name": "keyword.control.guidedtrack"
+        },
+        "2": {
+          "name": "variable.function.guidedtrack"
+        },
+        "3": {
+          "name": "constant.other.color.guidedtrack"
+        },
+        "4": {
+          "name": "variable.function.guidedtrack",
+          "patterns": [
+            {
+              "include": "#signs"
+            }
+          ]
+        },
+        "5": {
+          "name": "variable.function.guidedtrack",
+          "patterns": [
+            {
+              "include": "#strings"
+            },
+            {
+              "include": "#numbers"
+            },
+            {
+              "include": "#interpolated"
+            },
+            {
+              "include": "#signs"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "comment": "performing functions on variables, like .shuffle [make . diff color?]",
+      "match": "(>>)(.*)(\\.)(.*)",
+      "captures": {
+        "0": {
+          "name": "variable.function.guidedtrack"
+        },
+        "1": {
+          "name": "keyword.control.guidedtrack"
+        },
+        "2": {
+          "name": "variable.function.guidedtrack"
+        },
+        "3": {
+          "name": "constant.other.color.guidedtrack"
+        },
+        "4": {
+          "name": "markup.bold.guidedtrack"
+        }
+      }
+    },
+    {
+      "include": "#ifWhile"
+    },
+    {
+      "include": "#illegalSpace"
+    },
+    {
+      "include": "#saveAnswer"
+    },
+    {
+      "include": "#interpolated"
+    },
+    {
+      "include": "#notice"
+    },
+    {
+      "include": "#highlight"
+    }
+  ],
+  "repository": {
+    "strings": {
+      "name": "string.quoted.guidedtrack",
+      "contentName": "string.quoted.guidedtrack",
+      "begin": "\"",
+      "beginCaptures": "string.quoted.guidedtrack",
+      "end": "\"",
+      "endCaptures": "string.quoted.guidedtrack"
+    },
+    "numbers": {
+      "name": "constant.numeric.guidedtrack",
+      "match": "\\b(-)?[0-9.]+\\b"
+    },
+    "interpolated": {
+      "name": "constant.character.guidedtrack",
+      "contentName": "constant.character.guidedtrack",
+      "begin": "\\{",
+      "beginCaptures": "constant.character.guidedtrack",
+      "end": "\\}",
+      "endCaptures": "constant.character.guidedtrack"
+    },
+    "signs": {
+      "name": "constant.other.color.guidedtrack",
+      "match": "<|>|=|<=|>=|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/"
+    },
+    "ifWhile": {
+      "comment": "ifs and whiles",
+      "patterns": [
+        {
+          "comment": "*if/*while functions [add support for numbers, strings, logical operater highlighting following]",
+          "match": "\\*(if|while)\\:\\s?(.*)",
+          "captures": {
+            "0": {
+              "name": "keyword.control.guidedtrack"
+            },
+            "1": {
+              "name": "keyword.control.guidedtrack"
+            },
+            "2": {
+              "name": "variable.function.guidedtrack",
+              "patterns": [
+                {
+                  "include": "#strings"
+                },
+                {
+                  "include": "#numbers"
+                },
+                {
+                  "include": "#signs"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "illegalSpace": {
+      "name": "invalid.illegal.spaces.guidedtrack",
+      "match": "^\\s? .*$"
+    },
+    "saveAnswer": {
+      "patterns": [
+        {
+          "match": "\\*(save|answers)\\:\\s?(\\w+)\\s",
+          "captures": {
+            "0": {
+              "name": "keyword.control.guidedtrack"
+            },
+            "1": {
+              "name": "keyword.control.guidedtrack"
+            },
+            "2": {
+              "name": "variable.function.guidedtrack"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "limitLineLength": false
+}
