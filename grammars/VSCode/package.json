@@ -14,7 +14,8 @@
             "id": "guidedtrack",
             "aliases": ["GuidedTrack", "guidedtrack"],
             "extensions": [".gt",".guidedtrack"],
-            "configuration": "./language-configuration.json"
+            "configuration": "./language-configuration.json",
+            "firstLine": "--.*$"
         }],
         "grammars": [{
             "language": "guidedtrack",

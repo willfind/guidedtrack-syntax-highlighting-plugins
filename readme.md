@@ -1,6 +1,6 @@
 Syntax highlighters for the GuidedTrack language.
 
-Currently available for Atom and Sublime.
+Currently available for Atom, Sublime, and Visual Studio Code. 
 
 The Atom grammar is constructed in Textmate, and may work for other editors as well.
 

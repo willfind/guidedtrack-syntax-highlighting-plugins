@@ -3,4 +3,4 @@
 
 '.source.guidedtrack':
   'editor':
-    'commentStart': '@@ '
+    'commentStart': '-- '
