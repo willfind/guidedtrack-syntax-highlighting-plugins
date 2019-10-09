@@ -2,3 +2,4 @@
 * Improve highlighting for `*send` operations, such as: 
  `*send: {"category" -> "whatever", "action" -> "etc."}`
  At least, make it notice when there's not a closing }
+ * Add highlighting for `*component` and `*click` in VSCode (and any others it's missing in)
