@@ -158,7 +158,7 @@
     },
     "signs": {
       "name": "constant.other.color.guidedtrack",
-      "match": "<|>|=|<=|>=|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/"
+      "match": "<|>|=|<=|>=|\\bin\\b|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/"
     },
     "ifWhile": {
       "comment": "ifs and whiles",

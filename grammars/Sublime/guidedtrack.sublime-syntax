@@ -134,7 +134,7 @@ contexts:
           pop: true
 
   logical_operators:
-    - match: '<|>|=|<=|>=|\band\b|\bor\b|\bnot\b|\+|-'
+    - match: '<|>|=|<=|>=|\bin\b|\band\b|\bor\b|\bnot\b|\+|-'
       scope: keyword.operator.guidedtrack
     - match: '\('
       scope: punctuation.definition.bold.begin.guidedtrack
