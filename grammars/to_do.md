@@ -4,4 +4,5 @@
  At least, make it notice when there's not a closing }
  * Add highlighting for `*component` and `*click` in VSCode (and any others it's missing in)
  * Add support for bold and italics within strings, display text
+ * Add highlighting for `*list`s, so that list items are highlighted.
  
