@@ -33,7 +33,7 @@
   }
   {
     'comment': 'commands'
-    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list)\\b$'
+    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list|list\\:\\s?ordered)\\b$'
     'name': 'keyword.control.guidedtrack'
   }
   {
