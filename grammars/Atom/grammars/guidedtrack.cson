@@ -33,7 +33,7 @@
   }
   {
     'comment': 'commands'
-    'match': '\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list|list\\:\\s?ordered)\\b$'
+    'match': '\\*(confirm|component|click|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list|list\\:\\s?ordered)\\b$'
     'name': 'keyword.control.guidedtrack'
   }
   {
@@ -125,7 +125,7 @@
   }
   'signs':{
     'name': 'constant.other.color.guidedtrack'
-    'match': '<|>|=|<=|>=|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/'
+    'match': '<|>|=|<=|>=|\\bin\\b|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/'
   }
   'ifWhile': {
     'comment': 'ifs and whiles'

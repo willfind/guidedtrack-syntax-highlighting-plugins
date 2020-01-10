@@ -28,7 +28,11 @@
     },
     {
       "comment": "commands",
+<<<<<<< HEAD
       "match": "\\*(confirm|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list|list\\:\\s?ordered)\\b$",
+=======
+      "match": "\\*(confirm|component|click|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list)\\b$",
+>>>>>>> ec4015f734ba3417aa103823392a72cdcfd5f654
       "name": "keyword.control.guidedtrack"
     },
     {
@@ -158,7 +162,7 @@
     },
     "signs": {
       "name": "constant.other.color.guidedtrack",
-      "match": "<|>|=|<=|>=|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/"
+      "match": "<|>|=|<=|>=|\\bin\\b|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/"
     },
     "ifWhile": {
       "comment": "ifs and whiles",
