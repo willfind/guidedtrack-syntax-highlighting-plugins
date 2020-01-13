@@ -18,7 +18,7 @@
     },
     {
       "comment": "creates error-like highlighting for comments to increase visibility.",
-      "match": "--notice! .*",
+      "match": "--! .*",
       "name": "invalid.illegal.spaces.guidedtrack"
     },
     {
