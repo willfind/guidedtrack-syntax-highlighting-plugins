@@ -1,3 +1,4 @@
+* Add support for `in` (as in `*if: myVariable in myCollection`)
 * Add support for `*list: ordered` to Sublime Text.
 * put in highlighting to catch variable interpolation {} within strings, question text. 
 * Improve highlighting for `*send` operations, such as: 
