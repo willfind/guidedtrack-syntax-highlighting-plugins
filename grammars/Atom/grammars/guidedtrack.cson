@@ -8,7 +8,8 @@
 'scopeName': 'source.guidedtrack'
 'name': 'GuidedTrack'
 'fileTypes': [
-  'guidedtrack'
+  'guidedtrack',
+  'gt'
 ]
 'firstLineMatch': '--.*$'
 'patterns': [
