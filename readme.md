@@ -6,9 +6,9 @@ Currently available for Atom, Sublime, and Visual Studio Code.
 
 The Atom grammar is constructed in Textmate, and may work for other editors as well.
 
-See the readme files for each grammar, respectively, for more information.
+**See the readme files for each grammar, respectively, for more information and installation instructions.**
 
-For questions/difficulty with installation: andy@uplift.app
+For questions/difficulty with installation, or requests: andy@uplift.app
 
 ### Notes
 
