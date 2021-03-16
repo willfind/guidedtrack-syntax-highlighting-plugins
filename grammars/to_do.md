@@ -7,3 +7,5 @@
   * Add support for bold and italics within strings, display text
  * Expand highlighting for `*list`s, so that list items are highlighted.
  
+
+ * Add highlighting for links; this should work: `\[[^\]]*\|.*?\]`
