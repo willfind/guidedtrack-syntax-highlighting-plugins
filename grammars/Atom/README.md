@@ -7,6 +7,13 @@ This theme was designed for use with Atom's default One Dark theme. Used with th
 Note several features (below) that are not included in the online GT syntax highlighting.
 
 One way to set this up on your machine:
+
+- Copy the `grammars/Atom` folder into `~/.atom/packages`.
+- Rename it to something like `language-gt`.
+- Re-open Atom.
+
+Another way to set this up on your machine:
+
 * ctrl + shft + p
 * Type `language`
 * Select `Generate Language Package`
