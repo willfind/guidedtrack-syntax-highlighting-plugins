@@ -6,7 +6,7 @@ name: guidedtrack
 file_extensions:
   - guidedtrack
 scope: source.guidedtrack
-first_line_match: '--.*$'
+first_line_match: "--.*$"
 
 contexts:
   # The prototype context is prepended to all contexts but those setting
@@ -49,8 +49,8 @@ contexts:
         - meta_scope: storage.type.save.guidedtrack
         - match: '\w+\s'
           pop: true
-    # if you see logical operators after *if: and *when: then show those in a different color
-    - match: '\*(if|while)\:'
+    # if you see logical operators after *if:, *when:, or *for: then show those in a different color
+    - match: '\*(if|while|for)\:'
       scope: keyword.control.guidedtrack
       push:
         - include: numbers
@@ -82,7 +82,7 @@ contexts:
 
   comments:
     # Comments begin with a '--' and finish at the end of the line.
-    - match: '^--'
+    - match: "^--"
       scope: punctuation.definition.comment.guidedtrack
       push:
         # This is an anonymous context push for brevity.
@@ -101,19 +101,17 @@ contexts:
         - meta_scope: variable.function.guidedtrack
         - match: $\n?
           pop: true
-    - match: '(>>)'
+    - match: "(>>)"
       scope: variable.function.guidedtrack
       push:
         - meta_scope: variable.function.guidedtrack
         - match: $\n?
           pop: true
 
-
   interpolated_gt:
     - match: '(\{)(\})'
       scope: variable.parameter.guidedtrack
-      captures:
-        1. source.guidedtrack.embedded.source
+      captures: 1. source.guidedtrack.embedded.source
         2. source.guidedtrack.embedded.source.empty
     - match: '\{'
       scope: variable.parameter.guidedtrack
@@ -150,7 +148,7 @@ contexts:
 
   illegal_spaces:
     - match: '^\s? .*$'
-      scope: 'invalid.illegal.spaces.guidedtrack'
+      scope: "invalid.illegal.spaces.guidedtrack"
 
   # Capture markup for bold and italics. For some reason I can't get underline to work, but I'm leaving the code in there since it *should* be correct
   markup:
