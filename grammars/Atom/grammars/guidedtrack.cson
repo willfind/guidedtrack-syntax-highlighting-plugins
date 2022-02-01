@@ -93,7 +93,7 @@
       4:
         'name': 'markup.bold.guidedtrack'
   }
-  {'include': '#ifWhile'} #I put ifWhiles in the repository as an experiment; should probably put all in repo, or all repeated in main patterns.
+  {'include': '#ifWhileFor'} #I put ifWhileFors in the repository as an experiment; should probably put all in repo, or all repeated in main patterns.
   {'include': '#illegalSpace'}
   {'include': '#saveAnswer'}
   {'include': '#interpolated'}
@@ -128,12 +128,12 @@
     'name': 'constant.other.color.guidedtrack'
     'match': '<|>|=|<=|>=|\\bin\\b|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/'
   }
-  'ifWhile': {
-    'comment': 'ifs and whiles'
+  'ifWhileFor': {
+    'comment': 'ifs, whiles, and fors'
     'patterns':[
       {
-        'comment': '*if/*while functions [add support for numbers, strings, logical operater highlighting following]'
-        'match': '\\*(if|while)\\:\\s?(.*)'
+        'comment': '*if/*while/*for functions [add support for numbers, strings, logical operater highlighting following]'
+        'match': '\\*(if|while|for)\\:\\s?(.*)'
         'captures':
           0:
             'name': 'keyword.control.guidedtrack'

@@ -1,10 +1,8 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"scopeName": "source.guidedtrack",
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.guidedtrack",
   "name": "GuidedTrack",
-  "fileTypes": [
-    "guidedtrack"
-  ],
+  "fileTypes": ["guidedtrack", "gt"],
   "firstLineMatch": "--.*$",
   "patterns": [
     {
@@ -117,7 +115,7 @@
       }
     },
     {
-      "include": "#ifWhile"
+      "include": "#ifWhileFor"
     },
     {
       "include": "#illegalSpace"
@@ -160,12 +158,12 @@
       "name": "constant.other.color.guidedtrack",
       "match": "<|>|=|<=|>=|\\bin\\b|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/"
     },
-    "ifWhile": {
+    "ifWhileFor": {
       "comment": "ifs and whiles",
       "patterns": [
         {
-          "comment": "*if/*while functions [add support for numbers, strings, logical operater highlighting following]",
-          "match": "\\*(if|while)\\:\\s?(.*)",
+          "comment": "*if/*while/*for functions [add support for numbers, strings, logical operater highlighting following]",
+          "match": "\\*(if|while|for)\\:\\s?(.*)",
           "captures": {
             "0": {
               "name": "keyword.control.guidedtrack"
