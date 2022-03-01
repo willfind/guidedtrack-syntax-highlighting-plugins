@@ -121,7 +121,10 @@
       "include": "#illegalSpace"
     },
     {
-      "include": "#saveAnswer"
+      "include": "#save"
+    },
+    {
+      "include": "#answers"
     },
     {
       "include": "#interpolated"
@@ -193,10 +196,10 @@
       "name": "invalid.illegal.spaces.guidedtrack",
       "match": "^\\s? .*$"
     },
-    "saveAnswer": {
+    "save": {
       "patterns": [
         {
-          "match": "\\*(save|answers)\\:\\s?(\\w+)\\s",
+          "match": "\\*(save)\\:\\s?(\\w+)\\s",
           "captures": {
             "0": {
               "name": "keyword.control.guidedtrack"
@@ -206,6 +209,38 @@
             },
             "2": {
               "name": "variable.function.guidedtrack"
+            }
+          }
+        }
+      ]
+    },
+    "answers": {
+      "patterns": [
+        {
+          "match": "\\*(answers)\\:\\s?(.+)\\s",
+          "captures": {
+            "0": {
+              "name": "keyword.control.guidedtrack"
+            },
+            "1": {
+              "name": "keyword.control.guidedtrack"
+            },
+            "2": {
+              "name": "variable.function.guidedtrack",
+              "patterns": [
+                {
+                  "include": "#strings"
+                },
+                {
+                  "include": "#numbers"
+                },
+                {
+                  "include": "#interpolated"
+                },
+                {
+                  "include": "#signs"
+                }
+              ]
             }
           }
         }
