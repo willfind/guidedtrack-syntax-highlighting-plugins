@@ -14,7 +14,7 @@
 'firstLineMatch': '--.*$'
 'patterns': [
   {
-    'comment':'multi-line highlighting for organizational use.'
+    'comment': 'multi-line highlighting for organizational use.'
     'name': 'meta.require.guidedtrack'
     'contentName': 'markup.italic.guidedtrack'
     'begin': '--select'
@@ -72,8 +72,8 @@
       5:
         'name': 'variable.function.guidedtrack'
         'patterns': [
-          {'include':'#strings'}
-          {'include':'#numbers'}
+          {'include': '#strings'}
+          {'include': '#numbers'}
           {'include': '#interpolated'}
           {'include': '#signs'}
         ]
@@ -95,7 +95,8 @@
   }
   {'include': '#ifWhileFor'} #I put ifWhileFors in the repository as an experiment; should probably put all in repo, or all repeated in main patterns.
   {'include': '#illegalSpace'}
-  {'include': '#saveAnswer'}
+  {'include': '#save'}
+  {'include': '#answers'}
   {'include': '#interpolated'}
   {'include': '#notice'}
   {'include': '#highlight'}
@@ -114,7 +115,7 @@
   }
   'numbers':{
     'name': 'constant.numeric.guidedtrack'
-    'match':'\\b(-)?[0-9.]+\\b'
+    'match': '\\b(-)?[0-9.]+\\b'
   }
   'interpolated':{
     'name': 'constant.character.guidedtrack'
@@ -142,8 +143,8 @@
           2:
             'name': 'variable.function.guidedtrack'
             'patterns': [
-              {'include':'#strings'}
-              {'include':'#numbers'}
+              {'include': '#strings'}
+              {'include': '#numbers'}
               {'include': '#signs'}
             ]
       }
@@ -151,16 +152,34 @@
   }
   'illegalSpace':{
     'name': 'invalid.illegal.spaces.guidedtrack'
-    'match':'^\\s? .*$'
+    'match': '^\\s? .*$'
   }
-  'saveAnswer':{
+  'save':{
     'patterns':[
       {
-        'match': '\\*(save|answers)\\:\\s?(\\w+)\\s'
+        'match': '\\*(save)\\:\\s?(\\w+)\\s'
         'captures':
           0: 'name': 'keyword.control.guidedtrack'
           1: 'name': 'keyword.control.guidedtrack'
           2: 'name': 'variable.function.guidedtrack'
+      }
+    ]
+  }
+  'answers':{
+    'patterns':[
+      {
+        'match': '\\*(answers)\\:\\s?(.+)\\s'
+        'captures':
+          0: 'name': 'keyword.control.guidedtrack'
+          1: 'name': 'keyword.control.guidedtrack'
+          2:
+            'name': 'variable.function.guidedtrack'
+            'patterns': [
+              {'include': '#strings'}
+              {'include': '#numbers'}
+              {'include': '#interpolated'}
+              {'include': '#signs'}
+            ]
       }
     ]
   }
