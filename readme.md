@@ -1,22 +1,20 @@
 # GuidedTrack Language Packages
 
-### Syntax highlighters for the GuidedTrack language.
+### Syntax highlighters for the [GuidedTrack](https://guidedtrack.com) language.
 
-Currently available for Atom, Sublime, and Visual Studio Code. 
+Currently available for Atom, Sublime, and Visual Studio Code.
 
-The Atom grammar is constructed in Textmate, and may work for other editors as well.
+The Atom grammar is constructed in Textmate and may work for other editors as well.
 
 **See the readme files for each grammar, respectively, for more information and installation instructions.**
 
-Please open an issue if you have any difficulties with installation, or find a bug.
+Please open an issue if you have any difficulties with installation or find a bug!
 
 ### Notes
 
-You can trigger GuidedTrack syntax highlighting by making the first line of your file follow this format:
+Once installed, syntax highlighting should automatically be applied to files with ".guidedtrack" or ".gt" extensions.
 
-  `--{program name here}`
-
-A few features not found in the GT web editor: 
+This package has a few features not found in the GT web editor:
 
 * Error highlighting for illegal spaces
 
