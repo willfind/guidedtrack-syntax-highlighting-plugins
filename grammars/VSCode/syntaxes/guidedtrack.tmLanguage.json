@@ -26,226 +26,234 @@
     },
     {
       "comment": "commands",
-      "match": "\\*(confirm|component|click|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|list\\:\\s?expandable|list|list\\:\\s?ordered)\\b$",
+      "match": "\\*(confirm|component|click|blank|multiple|quit|other|shuffle|yaxis|xaxis|trendline|clear|email|body|cancel|login|navigation|randomize|group|return|everytime|share|events|startup|settings|success|error|throwaway|page|reset|click|html|list\\:\\s?expandable|list|list\\:\\s?ordered)\\b$",
       "name": "keyword.control.guidedtrack"
     },
-    {
-      "comment": "commands with : following",
-      "match": "(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis|switch|points)(\\:)\\s?(.*)",
-      "captures": {
-        "0": {
-          "name": "keyword.control.guidedtrack"
-        },
-        "1": {
-          "name": "keyword.control.guidedtrack"
-        },
-        "2": {
-          "name": "keyword.control.guidedtrack"
-        },
-        "3": {
-          "name": "keyword.control.guidedtrack"
-        },
-        "4": {
-          "name": "constant.character.guidedtrack"
-        }
-      }
-    },
-    {
-      "comment": "defining variables",
-      "match": "(>>)\\s?(\\w+)(\\[?.*\\]?)\\s?(=)\\s?(.*)",
-      "captures": {
-        "0": {
-          "name": "variable.other.object.guidedtrack"
-        },
-        "1": {
-          "name": "keyword.control.guidedtrack"
-        },
-        "2": {
-          "name": "variable.function.guidedtrack"
-        },
-        "3": {
-          "name": "constant.other.color.guidedtrack"
-        },
-        "4": {
-          "name": "variable.function.guidedtrack",
-          "patterns": [
-            {
-              "include": "#signs"
-            }
-          ]
-        },
-        "5": {
-          "name": "variable.function.guidedtrack",
-          "patterns": [
-            {
-              "include": "#strings"
-            },
-            {
-              "include": "#numbers"
-            },
-            {
-              "include": "#interpolated"
-            },
-            {
-              "include": "#signs"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "comment": "performing functions on variables, like .shuffle [make . diff color?]",
-      "match": "(>>)(.*)(\\.)(.*)",
-      "captures": {
-        "0": {
-          "name": "variable.function.guidedtrack"
-        },
-        "1": {
-          "name": "keyword.control.guidedtrack"
-        },
-        "2": {
-          "name": "variable.function.guidedtrack"
-        },
-        "3": {
-          "name": "constant.other.color.guidedtrack"
-        },
-        "4": {
-          "name": "markup.bold.guidedtrack"
-        }
-      }
-    },
-    {
-      "include": "#ifWhileFor"
-    },
-    {
-      "include": "#illegalSpace"
-    },
-    {
-      "include": "#save"
-    },
-    {
-      "include": "#answers"
-    },
-    {
-      "include": "#interpolated"
-    },
-    {
-      "include": "#notice"
-    },
-    {
-      "include": "#highlight"
-    }
-  ],
-  "repository": {
-    "strings": {
-      "name": "string.quoted.guidedtrack",
-      "contentName": "string.quoted.guidedtrack",
-      "begin": "\"",
-      "beginCaptures": "string.quoted.guidedtrack",
-      "end": "\"",
-      "endCaptures": "string.quoted.guidedtrack"
-    },
-    "numbers": {
-      "name": "constant.numeric.guidedtrack",
-      "match": "\\b(-)?[0-9.]+\\b"
-    },
-    "interpolated": {
-      "name": "constant.character.guidedtrack",
-      "contentName": "constant.character.guidedtrack",
-      "begin": "\\{",
-      "beginCaptures": "constant.character.guidedtrack",
-      "end": "\\}",
-      "endCaptures": "constant.character.guidedtrack"
-    },
-    "signs": {
-      "name": "constant.other.color.guidedtrack",
-      "match": "<|>|=|<=|>=|\\bin\\b|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/"
-    },
-    "ifWhileFor": {
-      "comment": "ifs and whiles",
-      "patterns": [
-        {
-          "comment": "*if/*while/*for functions [add support for numbers, strings, logical operater highlighting following]",
-          "match": "\\*(if|while|for)\\:\\s?(.*)",
-          "captures": {
-            "0": {
-              "name": "keyword.control.guidedtrack"
-            },
-            "1": {
-              "name": "keyword.control.guidedtrack"
-            },
-            "2": {
-              "name": "variable.function.guidedtrack",
-              "patterns": [
-                {
-                  "include": "#strings"
-                },
-                {
-                  "include": "#numbers"
-                },
-                {
-                  "include": "#signs"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    "illegalSpace": {
-      "name": "invalid.illegal.spaces.guidedtrack",
-      "match": "^\\s? .*$"
-    },
-    "save": {
-      "patterns": [
-        {
-          "match": "\\*(save)\\:\\s?(\\w+)\\s",
-          "captures": {
-            "0": {
-              "name": "keyword.control.guidedtrack"
-            },
-            "1": {
-              "name": "keyword.control.guidedtrack"
-            },
-            "2": {
-              "name": "variable.function.guidedtrack"
-            }
-          }
-        }
-      ]
-    },
-    "answers": {
-      "patterns": [
-        {
-          "match": "\\*(answers)\\:\\s?(.+)\\s",
-          "captures": {
-            "0": {
-              "name": "keyword.control.guidedtrack"
-            },
-            "1": {
-              "name": "keyword.control.guidedtrack"
-            },
-            "2": {
-              "name": "variable.function.guidedtrack",
-              "patterns": [
-                {
-                  "include": "#strings"
-                },
-                {
-                  "include": "#numbers"
-                },
-                {
-                  "include": "#interpolated"
-                },
-                {
-                  "include": "#signs"
-                }
-              ]
-            }
-          }
-        }
-      ]
-    }
-  },
-  "limitLineLength": false
+		{
+			"comment": "commands with : following",
+			"match": "(\\*)(question|type|before|after|min|max|tip|time|date|icon|countdown|header|default|tags|summary|chart|data|color|opacity|ticks|position|rollovers|wait|image|caption|repeat|subject|to|when|identifier|every|experiment|group|program|set|required|video|button|maintain|audio|start|hide|navigation|point|progress|randomize|group|repeat|title|picture|description|back|menu|classes|trigger|send|service|path|method|label|goto|xaxis|yaxis|switch|points|name|with)(\\:)\\s?(.*)",
+			"captures" : {
+				"1": {
+					"name": "keyword.control.guidedtrack"
+				},
+				"2": {
+					"name": "keyword.control.guidedtrack"
+				},
+				"3": {
+					"name": "keyword.control.guidedtrack"
+				},
+				"4": {
+					"name": "constant.character.guidedtrack"
+				}
+			}
+		},
+		{
+			"comment" : "if and while with : following",
+			"match" : "(\\*)(if|while|for)(\\:)\\s?(.*)",
+			"captures": {
+				"1": {
+					"name": "keyword.control.guidedtrack"
+				},
+				"2": {
+					"name": "keyword.control.guidedtrack"
+				},
+				"3": {
+					"name": "keyword.control.guidedtrack"
+				},
+				"4": {
+					"name" : "constant.character.guidedtrack",
+					"patterns" : [
+						{ "include" : "#signs" },
+						{ "include" : "#strings" },
+						{ "include" : "#numbers" }
+					]
+				}
+			}
+		},
+		{
+			"comment": "defining variables",
+			"match": "(>>)\\s?(\\w+)(\\[?.*\\]?)\\s?(=)\\s?(.*)",
+			"captures" : {
+					"1": {
+						"name": "keyword.control.guidedtrack"
+					},
+					"2": {
+						"name": "variable.guidedtrack"
+					},
+					"3": {
+						"name": "constant.character.guidedtrack",
+						"patterns": [
+							{
+								"include": "#strings"
+							}
+						]
+					},
+					"4": {
+						"name": "variable.function.guidedtrack",
+						"patterns": [
+							{
+								"include": "#strings"
+							},
+							{
+								"include": "#signs"
+							}
+						]
+					},
+					"5": {
+						"name": "variable.function.guidedtrack",
+						"patterns": [
+							{
+								"include": "#interpolated"
+							},
+							{
+								"include": "#strings"
+							},
+							{
+								"include": "#numbers"
+							},
+							{
+								"include": "#signs"
+							}
+						]
+					}
+			}
+		},
+		{
+			"comment": "performing functions on variables, like .shuffle [make . diff color?]",
+			"match": "(>>)(.*)(\\.)(.*)(\\()(.*)(\\))",
+			"captures": {
+				"1": {
+					"name": "keyword.control.guidedtrack"
+				},
+				"2": {
+					"name": "variable.guidedtrack",
+					"patterns": [
+						{
+							"include": "#strings"
+						}
+					]
+				},
+				"3": {
+					"name": "constant.other.color.guidedtrack"
+				},
+				"4": {
+					"name": "variable.other.property.guidedtrack"
+				},
+				"6": {
+					"name": "constant.character.guidedtrack",
+					"patterns": [
+						{
+							"include": "#strings"
+						}
+					]
+				}
+			}
+		},
+		{
+			"include": "#ifWhile"
+		},
+		{
+			"include": "#illegalSpace"
+		},
+		{
+			"include": "#saveAnswer"
+		},
+		{
+			"include": "#interpolated"
+		},
+		{
+			"include": "#notice"
+		},
+		{
+			"include": "#highlight"
+		},
+		{
+			"name" : "css.block.guidedtrack",
+			"comment" : "css syntax highlighting in GT code",
+			"begin" : "(?<=<style>)",
+			"end" : "</style>",
+			"contentName" : "meta.embedded.block.css",
+			"patterns": [
+				{
+					"include" : "source.css"
+				}
+			]
+		}
+
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.gt",
+					"match": "\\b(if|while|for|return)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.gt",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.gt",
+					"match": "\\\\."
+				}
+			]
+		},
+		"numbers": {
+			"name": "constant.numeric.guidedtrack",
+			"match": "\\b(-)?[0-9.]+\\b"
+		},
+		"interpolated": {
+			"name": "constant.character.guidedtrack",
+			"contentName": "constant.character.guidedtrack",
+			"begin": "\\{",
+			"end": "\\}",
+			"patterns": [
+				{
+					"include": "#strings"
+				}
+			]
+		},
+		"signs": {
+			"name": "entity.name.function.macro.guidedtrack",
+			"match": "<|>|=|<=|>=|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/|\\bin\\b"
+		}
+	},
+	"illegalSpace": {
+		"name": "invalid.illegal.spaces.guidedtrack",
+		"match": "^\\s? .*$"
+	},
+	"saveAnswer": {
+		"patterns": [
+			{
+				"match": "\\*(save|answers)\\:\\s?(\\w+)\\s",
+				"captures": {
+					"1": {
+						"name": "keyword.control.guidedtrack"
+					},
+					"2": {
+						"name": "variable.function.guidedtrack",
+						"patters": [
+							{
+								"include": "#strings"
+							},
+							{
+								"include": "#numbers"
+							},
+							{
+								"include": "#interpolated"
+							},
+							{
+								"include": "#signs"
+							}
+						]
+					}
+				}
+			}
+		]
+	},
+
+	"limitLineLength" : false 
 }

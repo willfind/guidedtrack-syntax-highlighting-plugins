@@ -4,9 +4,9 @@
   "name": "guidedtrack",
   "displayName": "GuidedTrack",
   "description": "Syntax highlighting for GuidedTrack programs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
-    "vscode": "^1.34.0"
+    "vscode": "^1.74.0"
   },
   "categories": [
     "Programming Languages"
@@ -27,12 +27,21 @@
         "firstLine": "--.*$"
       }
     ],
-    "grammars": [
-      {
+    "grammars": [ {
         "language": "guidedtrack",
         "scopeName": "source.guidedtrack",
         "path": "./syntaxes/guidedtrack.tmLanguage.json"
-      }
-    ]
+      } ],
+    "contributes" : {
+      "grammars" : [
+        {
+          "path" : "./syntaxes/gt.tmLanguage.json",
+          "scopeName" : "source.guidedtrack",
+          "embeddedLanguages" : {
+            "meta.embedded.block.css" : "css"
+          }
+        }
+      ]
+    }
   }
 }
