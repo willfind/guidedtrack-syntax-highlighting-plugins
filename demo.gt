@@ -1,0 +1,278 @@
+-- This program tries to show all possible GuidedTrack keywords and operators
+-- so that you can determine whether the syntax highlighting plugin is working
+-- correctly. Note that this is almost certainly *not* a valid GT program; its
+-- only purpose is to showcase the syntax, not to provide correct examples of
+-- how to use the API. If you notice that any items are missing from this
+-- program, please let the maintainers know!
+
+>> text = "It was the best of times; it was the worst of times."
+>> cleaned = text.clean
+>> count = text.count("the")
+>> decoded = text.decode("URL")
+>> encoded = text.encode("URL")
+>> index = text.find("times")
+>> lowered = text.lowercase
+>> length = text.size
+>> words = text.split(" ")
+>> uppered = text.uppercase
+
+>> number = 234.567
+>> rounded = number.round(4)
+>> duration = number.minutes
+
+>> collection = []
+>> collection.add("more items")
+>> collection.combine(some_other_collection)
+>> count = collection.count("hello")
+>> collection.erase("hello")
+>> index = collection.find("hello")
+>> collection.insert("world", index + 1)
+>> max = collection.max
+>> mean = collection.mean
+>> median = collection.median
+>> min = collection.min
+>> collection.remove(index)
+>> collection.shuffle
+>> length = collection.size
+>> collection.sort("increasing")
+>> set = collection.unique
+
+>> association = { "hello" -> "world" }
+>> association.erase("world")
+>> keys = association.keys
+>> association.remove("hello")
+
+>> now = calendar::now
+>> unix_epoch = calendar::date({ "year" -> 1970, "month" -> 1, "day" -> 1 })
+>> noon = calendar::time({ "hour" -> 12, "minute" -> 0 })
+>> duration.to("seconds")
+
+>> text = any.text
+>> type = any.type
+
+>> data::store("some_variable", some_value)
+
+*audio: https://example.com/path/to/some.mp3
+	*start: yes
+	*hide: no
+
+*button: Here's a button!
+
+*chart: My Cool Chart
+	*data: [["chocolate", 123], ["vanilla", 234], ["strawberry", 345]]
+	*type: "bar"
+	*xaxis
+		*min: -1
+		*max: 1
+	*yaxis
+		*min: -100
+		*max: 100
+	*trendline
+
+*clear
+
+*component
+	*header: My Cool Component
+	*classes: class1, class2, class3
+	*with: someVariable
+	*click
+		>> component_was_clicked = "yes"
+
+*database: request
+	*what: email
+	*success
+		Yea!
+	*error
+		Nay!
+
+*email
+	*subject: Hello from the future!
+	*to: someone@example.com
+	*when: calendar::now - 10.years
+	*every: 5.minutes
+	*until: calendar::now + 10.years
+	*identifier: future_emails
+	*cancel: future_emails
+	*body
+		Hey! This is you! I'm emailing you from a future email address! Everything now runs on potatoes!
+
+*events
+	*startup
+		>> has_started = "yes"
+
+	some_other_event
+		>> some_other_event_was_fired = "yes"
+		*goto: Some Label
+			*reset
+
+*experiment: My Cool Experiment
+	*group: Control
+		Take these placebo pills and then tell us how you feel.
+
+	*group: Intervention
+		Take these actually medicinal pills and then tell us how you feel.
+
+*for: i, v in my_list
+	my_list[{i}] = {v}
+
+*goto: Some Label
+	*reset
+
+*group
+	You're in Group 1.
+
+*group
+	You're in Group 2
+
+*group: The Coolest Group
+	You're in the coolest group.
+
+*html
+	<style>
+		a {
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+
+	<a href="https://guidedtrack.com">
+		Click here to go to the GuidedTrack home page!
+	</a>
+
+*if: age < 18
+	You're not elegible to run this program!
+	*quit
+
+*image: https://example.com/path/to/some_image.png
+	*caption: It's an image!
+
+*label: Some Label
+
+*list: ordered
+	Lions
+	Tigers
+	Bears
+
+*login
+	*required: yes
+
+*maintain: This text will NEVER disappear (unless you use `*clear`).
+
+*navigation
+	Home
+		*icon: fa-home
+		*goto: homeLabel
+	About
+		*icon: fa-about
+		*goto: aboutLabel
+	Settings
+		*icon: fa-settings
+		*goto: settingsLabel
+
+*page
+	*question: There should be a question below this one. Is it there?
+		Yes
+		No
+
+	*question: There should be a question above this one. Is it there?
+		Yes
+		No
+
+*points: 100 forNoReasonPoints
+
+*program: Some Other Program
+
+*progress: 50%
+
+*purchase
+	*status
+	*frequency: recurring
+	*management
+	*success
+		goto: afterSuccessfulPurchaseLabel
+			*reset
+	*error
+		goto: afterFailedPurchaseLabel
+			*reset
+
+*question: Why?
+	*type: checkbox
+	*shuffle
+	*save: why
+	*tip: Here's a tip: 42.
+	*confirm
+	*searchable
+	*throwaway
+	*countdown: 30.seconds
+	*tags: tag1, tag2, tag3
+	*answers: [["yes", 1], ["no", -1], ["maybe so", 0]]
+	*blank
+	*multiple
+	*default: maybe so
+	*before: $
+	*after: cm
+	*min: 0
+	*max: 100
+	*time: yes
+	*date: no
+	*placeholder: Because!
+	*other
+	Here
+	Are
+	Some
+	Answer
+	Options
+
+*quit
+
+*randomize: 5
+	*everytime
+	*name: A Few of My Favorite Random Things
+	Apple
+	Banana
+	Cherry
+	Date
+	Eggplant
+	Fig
+	Grapefruit
+
+*repeat: 3
+	For he's a jolly good fellow,
+
+Which nobody can deny!
+
+*return
+
+*service: Random Quote Service
+	*path: /get/me/a/random/quote
+	*method: GET
+	*send: { "hello" -> "world" }
+	*success
+		>> quote = it["quote"]
+		>> author = it["author"]
+	*error
+		>> error = it["error"]
+
+*set: is_working_on_the_gt_syntax_highlighting_plugin
+
+*settings
+	*back: yes
+	*menu: no
+
+*share
+
+*summary: math_questions
+
+*switch: Some Other Program
+	*reset
+
+*trigger: someEvent
+	*send: { "time" -> calendar::now }
+
+*video: https://example.com/path/to/some/video.mp4
+
+*wait: 30.seconds
+
+*while: 0 < 1
+	All work and no play makes Jack a dull boy.
+
