@@ -149,24 +149,14 @@
 				}
 			}
 		},
-		{
-			"include": "#ifWhile"
-		},
-		{
-			"include": "#illegalSpace"
-		},
-		{
-			"include": "#saveAnswer"
-		},
-		{
-			"include": "#interpolated"
-		},
-		{
-			"include": "#notice"
-		},
-		{
-			"include": "#highlight"
-		},
+		{ "include": "#ifWhile" },
+		{ "include": "#illegalSpace" },
+		{ "include": "#save" },
+		{ "include": "#answers" },
+		{ "include": "#placeholder" },
+		{ "include": "#interpolated" },
+		{ "include": "#notice" },
+		{ "include": "#highlight" },
 		{
 			"name" : "css.block.guidedtrack",
 			"comment" : "css syntax highlighting in GT code",
@@ -219,40 +209,92 @@
 		"signs": {
 			"name": "entity.name.function.macro.guidedtrack",
 			"match": "<|>|=|<=|>=|\\band\\b|\\bor\\b|\\bnot\\b|\\+|-|\\*|\\/|\\bin\\b"
-		}
-	},
-	"illegalSpace": {
-		"name": "invalid.illegal.spaces.guidedtrack",
-		"match": "^\\s? .*$"
-	},
-	"saveAnswer": {
-		"patterns": [
-			{
-				"match": "\\*(save|answers)\\:\\s?(\\w+)\\s",
-				"captures": {
-					"1": {
-						"name": "keyword.control.guidedtrack"
-					},
-					"2": {
-						"name": "variable.function.guidedtrack",
-						"patters": [
-							{
-								"include": "#strings"
-							},
-							{
-								"include": "#numbers"
-							},
-							{
-								"include": "#interpolated"
-							},
-							{
-								"include": "#signs"
-							}
-						]
+		},
+		"illegalSpace": {
+			"name": "invalid.illegal.spaces.guidedtrack",
+			"match": "^\\s? .*$"
+		},
+		"save": {
+			"patterns": [
+				{
+					"match": "(\\*)(save)(\\:)\\s?(\\w+)\\s",
+					"captures": {
+						"1": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"2": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"3": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"4": {
+							"name": "constant.character.guidedtrack",
+							"patterns": [
+								{ "include": "#strings" },
+								{ "include": "#numbers" },
+								{ "include": "#interpolated" },
+								{ "include": "#signs" }
+							]
+						}
 					}
 				}
-			}
-		]
+			]
+		},
+		"answers": {
+			"patterns": [
+				{
+					"match": "(\\*)(answers)(\\:)\\s?(.+)\\s",
+					"captures": {
+						"1": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"2": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"3": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"4": {
+							"name": "constant.character.guidedtrack",
+							"patterns": [
+								{ "include": "#strings" },
+								{ "include": "#numbers" },
+								{ "include": "#interpolated" },
+								{ "include": "#signs" }
+							]
+						}
+					}
+				}
+			]
+		},
+		"placeholder": {
+			"patterns": [
+				{
+					"match": "(\\*)(placeholder)(\\:)\\s?(.+)\\s",
+					"captures": {
+						"1": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"2": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"3": {
+							"name": "keyword.control.guidedtrack"
+						},
+						"4": {
+							"name": "constant.character.guidedtrack",
+							"patterns": [
+								{ "include": "#strings" },
+								{ "include": "#numbers" },
+								{ "include": "#interpolated" },
+								{ "include": "#signs" }
+							]
+						}
+					}
+				}
+			]
+		}
 	},
 
 	"limitLineLength" : false 
